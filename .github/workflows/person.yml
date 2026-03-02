@@ -2,3 +2,12 @@ name: Abdullah Rangwala
 role: DevOps Learner
 experience_years: 1
 learning: true
+
+tools:
+  - Docker
+  - Kubernetes
+  - Git
+  - Jenkins
+  - AWS
+
+hobbies: [coding, reading, gym]
