@@ -1,0 +1,16 @@
+name: Manual Workflow
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: "Environment name"
+        required: true
+        default: "staging"
+
+jobs:
+  run-manual:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print environment
+        run: echo "Running in environment: ${{ github.event.inputs.environment }}"
