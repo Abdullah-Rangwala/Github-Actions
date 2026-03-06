@@ -4,11 +4,12 @@ on:
   pull_request:
     branches:
       - main
+  schedule:
+    - cron: '0 0 * * *'
 
 jobs:
   pr-check:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Print PR branch
-        run: echo "PR check running for branch: ${{ github.head_ref }}"
+      - name: Print message
+        run: echo "Workflow triggered"
