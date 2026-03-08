@@ -9,7 +9,7 @@ jobs:
     steps:
       - name: Check PreInstalled Tools
         run: |
-          dokcer --verison
+          docker --version
           python --version
           node --version
           git --version
