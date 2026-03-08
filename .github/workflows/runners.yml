@@ -1,0 +1,31 @@
+name: Runner Demo
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  ubuntu_job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print runner info
+        run: |
+          echo "OS: $RUNNER_OS"
+          hostname
+          whoami
+  windows_job:
+    runs-on: windows-latest
+    steps:
+      - name: Print runner info
+        run: |
+          echo "OS: $RUNNER_OS"
+          hostname
+          whoami
+  macos_job:
+    runs-on: macos-latest
+    steps:
+      - name: Print runner info
+        run: |
+          echo "OS: $RUNNER_OS"
+          hostname
+          whoami
