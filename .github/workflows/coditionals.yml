@@ -1,8 +1,8 @@
 name: Conditionals Demo 2
 
 on: 
-  push:
-  pull_request:
+  push: [main]
+  pull_request: [main]
 
 jobs:
   conditional_job:
