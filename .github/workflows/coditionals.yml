@@ -7,13 +7,13 @@ on:
 jobs:
   conditional_job:
     runs-on: ubuntu-latest
-
-    if: github.event.name == 'push'
   
     steps:
       - name: Step that runs only on main branch
         if: github.ref == 'refs/heads/main'
-        run: echo "Running only on main branch"
+        run: |
+          echo "Running only on main branch"
+          echo "Event = ${{ github.event_name }}"
       
       - name: Step that fails intentionally
         id: fail_step
