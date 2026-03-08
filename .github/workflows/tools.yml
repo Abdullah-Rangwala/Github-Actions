@@ -4,7 +4,7 @@ on: [push]
 
 jobs:
   check_tools:
-    runs_on: ubuntu-latest
+    runs-on: ubuntu-latest
     
     steps:
       - name: Check PreInstalled Tools
