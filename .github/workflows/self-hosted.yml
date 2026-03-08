@@ -1,0 +1,19 @@
+name: Self-Hosted
+
+on: [push]
+
+jobs:
+  test-runner:
+    runs-on: self-hosted
+    steps:
+      - name: Print Hostname
+        run: hostname
+      
+      - name: Print Working Directory
+        run: pwd
+
+      - name: create File
+        run: echo "This file was created by GitHub Actions on a self-hosted runner." > self-hosted-file.txt  
+      
+      - name: List Files
+        run: ls
