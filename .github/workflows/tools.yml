@@ -1,0 +1,15 @@
+name: Check tools
+
+on: [push]
+
+jobs:
+  check_tools:
+    runs_on: ubuntu-latest
+    
+    steps:
+      - name: Check PreInstalled Tools
+        run: |
+          dokcer --verison
+          python --version
+          node --version
+          git --version
