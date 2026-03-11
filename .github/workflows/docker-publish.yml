@@ -11,4 +11,4 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Build the docker image
-        run: docker buid -t my-node-app:latest .
+        run: docker build -t my-node-app:latest .
