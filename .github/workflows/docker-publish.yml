@@ -1,6 +1,8 @@
 name: Docker Build
 
-on: [push]
+on:
+  push:
+    branches: [main]
 
 jobs:
   build-image:
@@ -10,5 +12,18 @@ jobs:
       - name: Check out the Repo
         uses: actions/checkout@v4
 
-      - name: Build the docker image
-        run: docker build -t my-node-app:latest .
+      - name: Login to DockerHub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_TOKEN }}
+      
+      - name: Build and Push Docker image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          push: true
+          tags: |
+            ${{ secrets.DOCKER_USERNAME }}/my-node-app:${{ github.ref_name }}
+            ${{ secrets.DOCKER_USERNAME }}/my-node-app:latest
+            ${{ secrets.DOCKER_USERNAME }}/my-node-app:sha-${{ github.sha}}
