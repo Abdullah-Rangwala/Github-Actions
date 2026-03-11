@@ -26,4 +26,4 @@ jobs:
           tags: |
             ${{ secrets.DOCKER_USERNAME }}/my-node-app:${{ github.ref_name }}
             ${{ secrets.DOCKER_USERNAME }}/my-node-app:latest
-            ${{ secrets.DOCKER_USERNAME }}/my-node-app:sha-${{ github.sha}}
+            ${{ secrets.DOCKER_USERNAME }}/my-node-app:sha-${{ github.sha::7 }}
