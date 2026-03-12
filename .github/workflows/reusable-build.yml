@@ -17,10 +17,19 @@ on:
     secrets:
       docker_token:
         required: true
+    
+    outputs:
+      build-version:
+        description: "Generated build version"
+        value: ${{ jobs.build.outputs.Version }}
 
 jobs:
   build:
     runs-on: ubuntu-latest
+
+    outputs:
+      Version: ${{ steps.build_version.outputs.Version }}
+
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
@@ -28,6 +37,12 @@ jobs:
       - name: Print Build Info
         run: |
           echo "Building  ${{ inputs.app_name }} for ${{ inputs.environment }} environment"
+
+      - name: Generate Build Version
+        id: build_version
+        run: |
+          Version = "v1.0.${ GITHUB_SHA::7 }"
+          echo "Version=$Version" >> $GITHUB_OUTPUT
 
       - name: Verify docker token
         run: |
