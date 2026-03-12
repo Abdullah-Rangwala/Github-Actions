@@ -41,7 +41,7 @@ jobs:
       - name: Generate Build Version
         id: build_version
         run: |
-          Version = "v1.0.${ GITHUB_SHA::7 }"
+          Version = "v1.0.${GITHUB_SHA::7}"
           echo "Version=$Version" >> $GITHUB_OUTPUT
 
       - name: Verify docker token
