@@ -1,0 +1,13 @@
+name: Call reusable Build
+
+on: [push]
+
+jobs:
+  build:
+    uses: ./.github/workflow/reusable-build.yml
+    with:
+      app_name: 'MyApp'
+      environment: 'production'
+    secrets:
+      docker_token: ${{ secrets.DOCKER_TOKEN }}
+
