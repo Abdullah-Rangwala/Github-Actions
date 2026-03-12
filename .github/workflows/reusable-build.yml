@@ -16,9 +16,7 @@ on:
 
       secrets:
         docker_token:
-          description: 'Docker Hub Token'
           required: true
-          type: string
 
 jobs:
   build:
