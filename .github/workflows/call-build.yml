@@ -4,7 +4,7 @@ on: [push]
 
 jobs:
   build:
-    uses: ./.github/workflow/reusable-build.yml
+    uses: ./.github/workflow/reusable-build.yml@main
     with:
       app_name: 'MyApp'
       environment: 'production'
