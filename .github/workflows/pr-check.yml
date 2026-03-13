@@ -4,12 +4,53 @@ on:
   pull_request:
     branches:
       - main
-  schedule:
-    - cron: '0 0 * * *'
 
 jobs:
-  pr-check:
+
+  file-size-check:
     runs-on: ubuntu-latest
+    
     steps:
-      - name: Print message
-        run: echo "Workflow triggered"
+    - name: Checkout Code
+      uses: actions/checkout@v4
+
+    - name: Check file sizes
+      run: |
+        echo "checking for files larger than 1 MB..."
+        large_files=$(find . -type f -size +1M)
+
+        if [ -n "$large_files" ];then
+          echo "large Files found:"
+          echo "$large_files"
+          exit 1
+        else
+          echo "No large Files found."
+        fi
+
+  branch-name-check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Validate branch name
+        run: |
+          echo "Branch name: ${{ github.head_ref }}"
+
+          if [[ ! "${{ github.head_ref }}" =~ ^(feature/|fix/|docs/) ]]; then
+            echo "Invalid branch name"
+            echo "Branch must start with feature/, fix/, or docs/"
+            exit 1
+          else
+            echo "Branch name valid"
+          fi
+
+  pr-body-check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check PR description
+        run: |
+          if [ -z "${{ github.event.pull_request.body }}" ]; then
+            echo "Warning: PR description is empty"
+          else
+            echo "PR description exists"
+          fi
