@@ -1,6 +1,7 @@
 name: Check tools
 
-on: [push]
+on: 
+  workflow_dispatch:
 
 jobs:
   check_tools:

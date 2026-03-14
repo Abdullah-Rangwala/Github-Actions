@@ -1,6 +1,7 @@
 name: Artifact Transfer Demo
 
-on: push
+on: 
+  workflow_dispatch:
 
 jobs:
   generate-file:
