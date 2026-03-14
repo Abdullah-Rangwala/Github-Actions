@@ -1,13 +1,11 @@
-from node:18-alpine
+FROM python:3.13-slim
 
-workdir /app
+WORKDIR /app
 
-copy package.json .
+COPY . .
 
-run npm install
+RUN pip install --no-cache-dir -r requirements.txt
 
-copy . . 
+EXPOSE 80
 
-expose 3000
-
-cmd ["node", "app.js"]
+CMD ["gunicorn","--bind", "0.0.0.0:80", "app:app"]
