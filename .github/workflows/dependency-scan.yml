@@ -19,8 +19,6 @@ jobs:
 
       - name: Install Pip Audit
         run: pip install pip-audit
-        with:
-          python-version: "3.12"
-
-      - name: Audit Dpendencies
+        
+      - name: Audit Dependencies
         run: pip-audit -r requirements.txt
